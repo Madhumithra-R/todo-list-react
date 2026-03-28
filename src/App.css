@@ -1,250 +1,37 @@
-*, *::before, *::after { box-sizing: border-box; }
-
-.page {
+/* Unique Modern Theme */
+body {
+  margin: 0;
+  /* Soft gradient background similar to the image */
+  background: linear-gradient(135deg, #fdf2f8 0%, #e0f2fe 50%, #eef2ff 100%);
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #f5f3ee;
-  font-family: "Georgia", "Times New Roman", serif;
-  padding: 24px 16px;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.card {
-  width: 100%;
-  max-width: 480px;
-  background: #fffef9;
-  border-radius: 4px;
-  box-shadow: 0 2px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
-  padding: 32px 32px 24px;
+.todo-card { /* Wrap your app in a div with this class */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px); /* This creates the glass effect */
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 400px;
 }
 
-.header {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 28px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #d4a847;
-  margin-top: 8px;
-  flex-shrink: 0;
-}
-
-.title {
-  margin: 0;
-  font-size: 26px;
-  font-weight: normal;
-  color: #1a1814;
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-}
-
-.subtitle {
-  margin: 4px 0 0;
-  font-size: 13px;
-  color: #888;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-style: italic;
-}
-
-.input-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.task-input {
-  flex: 1;
-  padding: 10px 14px;
-  font-size: 15px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  border: 1.5px solid #e0ddd5;
-  border-radius: 3px;
-  background: #faf9f5;
-  color: #1a1814;
-  outline: none;
-  transition: border-color 0.15s;
-}
-
-.task-input:focus {
-  border-color: #1a1814;
-  background: #fff;
-}
-
-.add-btn {
+/* Make your 'Add' button look like the 'Copy' button */
+button.add-btn {
+  background: #3b82f6;
+  color: white;
+  border-radius: 12px;
+  border: none;
   padding: 10px 20px;
-  font-size: 14px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600;
-  background: #1a1814;
-  color: #fffef9;
-  border: none;
-  border-radius: 3px;
   cursor: pointer;
-  transition: opacity 0.15s;
-  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.add-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.filter-bar {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 20px;
-  border-bottom: 1.5px solid #e8e5de;
-  padding-bottom: 12px;
-}
-
-.filter-btn {
-  padding: 5px 12px;
-  font-size: 13px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background: transparent;
-  border: 1.5px solid transparent;
-  border-radius: 20px;
-  cursor: pointer;
-  color: #888;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.15s;
-}
-
-.filter-btn-active {
-  color: #1a1814;
-  border-color: #d0cdc5;
-  background: #f0ede6;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  background: #e8e5de;
-  border-radius: 9px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #888;
-}
-
-.badge-active {
-  background: #d4a847;
-  color: #fff;
-}
-
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.task-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 10px;
-  border-radius: 3px;
-  transition: background 0.1s;
-}
-
-.task-item:hover { background: #f5f2eb; }
-.task-item:hover .delete-btn { opacity: 1; }
-
-.checkbox {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1.5px solid #c8c4bc;
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.15s;
-  padding: 0;
-}
-
-.checkbox-done {
-  background: #1a1814;
-  border-color: #1a1814;
-}
-
-.task-text {
-  flex: 1;
-  font-size: 15px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #1a1814;
-  cursor: pointer;
-  line-height: 1.4;
-  transition: all 0.2s;
-}
-
-.task-text-done {
-  text-decoration: line-through;
-  color: #b0ada6;
-}
-
-.delete-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #c0bcb4;
-  padding: 4px;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.15s, color 0.15s;
-  flex-shrink: 0;
-}
-
-.delete-btn:hover { color: #c0392b; }
-
-.empty {
-  text-align: center;
-  padding: 40px 0;
-  font-size: 14px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #b0ada6;
-  font-style: italic;
-}
-
-.footer {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1.5px solid #e8e5de;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #aaa;
-}
-
-.clear-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #b05a3a;
-  font-size: 12px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  padding: 0;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+button.add-btn:hover {
+  background: #2563eb;
+  transform: scale(1.05);
 }
