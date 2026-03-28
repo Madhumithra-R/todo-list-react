@@ -1,4 +1,4 @@
-# ✅ Todo List App
+# ✅ Todo List App with Local Storage
 
 A simple and functional Todo List application built with **React.js**.
 
